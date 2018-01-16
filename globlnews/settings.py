@@ -134,6 +134,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'globlnews/static/'),  # Here you tell django to look for a folder named 'assets'
+]
+
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'globlnews/templates/'),

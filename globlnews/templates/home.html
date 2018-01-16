@@ -1,5 +1,8 @@
 {% extends '_layouts/base.html'%}
-
+{% load static %}
+    {% block css %}
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+    {% endblock css %}
 {% block headline %} <h1> Welcome to Globl.News</h1> {% endblock headline %}
 
 {% block content %}
