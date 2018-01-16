@@ -18,15 +18,6 @@ class InstructionView(generic.TemplateView):
     template_name = 'instructions.html'
 
 
-class SubmitView(generic.CreateView):
-    #TODO: Add corresponding model and additional stuff here
-    template_name = 'submit.html'
-
-
-class SummaryView(generic.TemplateView):
-    template_name = 'summary.html'
-
-
 class SignUpView(views.AnonymousRequiredMixin,
                  views.FormValidMessageMixin,
                  generic.CreateView):
