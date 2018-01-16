@@ -38,6 +38,9 @@
 				  <li><a href="/science">Science</a></li>
 				  <li><a href="/imprint">Impressum</a></li>
 				  <li><a href="/instructions">Instructions</a></li>
+				{% if user.is_authenticated %}
+				  <li><a href="/summaries/submit">Submit</a></li>
+                {% endif %}
 				</ul>
 				
 				<div align="right">
