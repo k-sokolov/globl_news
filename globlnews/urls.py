@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from globlnews.views import HomePageView, InstructionView, SubmitView, SummaryView, \
+from django.urls import path, include
+from globlnews.views import HomePageView, InstructionView, \
     SignUpView, ImprintView, YourContributionsView, ScienceStuffView, ProjectInformationView, LoginView, LogOutView
 
 
@@ -23,8 +23,8 @@ from globlnews.views import HomePageView, InstructionView, SubmitView, SummaryVi
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('instructions', InstructionView.as_view(), name='instructions'),
-    path('submit', SubmitView.as_view(), name='submit'),
-    path('summary', SummaryView.as_view(), name='summary'),
+#    path('submit', SubmitView.as_view(), name='submit'),
+#    path('summary', SummaryView.as_view(), name='summary'),
     path('account/signup', SignUpView.as_view(), name='signup'),
     path('account/login', LoginView.as_view(), name='login'),
     path('account/logout', LogOutView.as_view(), name='logout'),
@@ -32,5 +32,6 @@ urlpatterns = [
     path('contributions', YourContributionsView.as_view(), name='contributions'),
     path('science', ScienceStuffView.as_view(), name='science'),
     path('projectinformation', ProjectInformationView.as_view(), name='projectinformation'),
+    path('summaries/', include('summaries.urls')),
     path('admin', admin.site.urls),
 ]
