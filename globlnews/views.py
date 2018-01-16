@@ -58,9 +58,9 @@ class LoginView(views.AnonymousRequiredMixin,
             return self.form_invalid(form)
 
 
-class LogOutView(views.AnonymousRequiredMixin,
-                 views.FormValidMessageMixin,
+class LogOutView(views.LoginRequiredMixin,
                  generic.RedirectView):
+
     url = reverse_lazy('home')
     form_valid_message = 'You are logged out now'
 
