@@ -33,3 +33,10 @@ class SummaryView(generic.DetailView):
 
     model = models.Summary
     template_name = 'summary.html'
+
+
+class SummaryList(generic.ListView):
+    model = models.Summary
+    context_object_name = 'summary_list'
+    queryset = models.Summary.objects.all().order_by('-submission_date_summary')[:8]
+    template_name = 'overview.html'

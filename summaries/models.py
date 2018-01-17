@@ -62,11 +62,20 @@ class Tag(models.Model):
         choices=TAG_CHOICES,
         default=WHAT,
     )
+    slug = models.SlugField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Tag, self).save(*args, **kwargs)
 
 
 class Comments(models.Model):
     title = models.CharField(max_length=200)
     short_summary = models.CharField(max_length=1000)
+    slug = models.SlugField(max_length=255, blank=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -75,3 +84,10 @@ class Comments(models.Model):
         'Summary',
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Comments, self).save(*args, **kwargs)

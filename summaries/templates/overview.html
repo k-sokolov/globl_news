@@ -1,0 +1,19 @@
+{% extends '_layouts/base.html'%}
+{% load static %}
+    {% block css %}
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+    {% endblock css %}
+{% block headline %} <h1> Welcome to Globl.News</h1> {% endblock headline %}
+
+{% block content %}
+    <h2>Articles</h2>
+    <ul>
+        {% for summary in object_list %}
+            <li>{{ summary.title }}</li>
+        {% endfor %}
+    </ul>
+    <!-- <div class="container">
+        <img src="pic_folder/white.bmp" alt="white" style="width:100%;">
+        <div class="centered">Centered</div>
+    </div> -->
+{% endblock %}

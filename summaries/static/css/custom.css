@@ -1,0 +1,20 @@
+.btn_header {
+	color: white;
+	align: center;
+}
+
+.btn_register {
+	background-color: red;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
