@@ -12,8 +12,49 @@
             <li>{{ summary.title }}</li>
         {% endfor %}
     </ul>
-    <!-- <div class="container">
-        <img src="pic_folder/white.bmp" alt="white" style="width:100%;">
-        <div class="centered">Centered</div>
-    </div> -->
+        {% for summary in object_list %}
+            <li>{{ summary.title }}</li>
+        {% endfor %}
+    <div class="row">
+        <div class="column">
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered1</div>
+            </div>
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered2</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered3</div>
+            </div>
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered4</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered5</div>
+            </div>
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered6</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered7</div>
+            </div>
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">Centered8</div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
