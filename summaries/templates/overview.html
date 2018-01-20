@@ -6,17 +6,22 @@
 {% block headline %} <h1> Welcome to Globl.News</h1> {% endblock headline %}
 
 {% block content %}
-    <h2>Articles</h2>
-    <ul>
-        {% for summary in object_list %}
-            <li>{{ summary.title }}</li>
-        {% endfor %}
-    </ul>
-        {% for summary in object_list %}
-            <li>{{ summary.title }}</li>
-        {% endfor %}
+    {% load own_filters %}
+
     <div class="row">
-        <div class="column">
+        {% for summary in object_list %}
+            {% if forloop.counter|modulo:2 == 1 %}
+                <div class="column">
+            {% endif %}
+            <div class="overview_container">
+                <img src="{% static "pictures/square.png" %}" alt="My image"/>
+                <div class="centered">{{summary.title}}</div>
+            </div>
+            {% if forloop.counter|modulo:2 == 0 %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <!--<div class="column">
             <div class="overview_container">
                 <img src="{% static "pictures/square.png" %}" alt="My image"/>
                 <div class="centered">Centered1</div>
@@ -56,5 +61,5 @@
                 <div class="centered">Centered8</div>
             </div>
         </div>
-    </div>
+    </div>-->
 {% endblock %}
