@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 #class Topic(models.Model):
 #    title = models.CharField(max_length=200)
@@ -43,6 +44,10 @@ class Summary(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.id)
         super(Summary, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        print(self.slug)
+        return reverse('summary', kwargs={'slug': self.slug})
 
 
 class Tag(models.Model):

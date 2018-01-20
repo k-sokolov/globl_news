@@ -15,7 +15,9 @@
             {% endif %}
             <div class="overview_container">
                 <img src="{% static "pictures/square.png" %}" alt="My image"/>
-                <div class="centered">{{summary.title}}</div>
+                <div class="centered">
+                    <a href="{{ summary.get_absolute_url }}">{{ summary.title }}</a>
+                </div>
             </div>
             {% if forloop.counter|modulo:2 == 0 %}
         </div>
