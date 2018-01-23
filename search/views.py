@@ -1,52 +1,16 @@
+# encoding: utf-8
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views import generic
 from django.conf import settings
 from django.core.paginator import InvalidPage, Paginator
 from django.http import Http404
 from django.shortcuts import render
-from braces import views
-from . import forms
-from . import models
 
 from haystack.forms import FacetedSearchForm, ModelSearchForm
 from haystack.query import EmptySearchQuerySet
 
 RESULTS_PER_PAGE = getattr(settings, 'HAYSTACK_SEARCH_RESULTS_PER_PAGE', 20)
-
-#class SubmitView(
-#    views.LoginRequiredMixin,
-#    generic.CreateView):
-#
-#    form_class = forms.SummaryForm
-#
-#    template_name = 'submit.html'
-
-class SubmitView(views.LoginRequiredMixin,
-                 views.FormValidMessageMixin,
-                 generic.CreateView):
-    success_url = reverse_lazy('home')
-    form_class = forms.SummaryForm
-    form_valid_message = 'Thanks for Submitting a Summary'
-    model = models.Summary
-    template_name = 'submit.html'
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super(SubmitView, self).form_valid(form)
-
-
-class SummaryView(generic.DetailView):
-
-    model = models.Summary
-    template_name = 'summary.html'
-
-	
 
 
 class SearchView(object):
@@ -92,7 +56,7 @@ class SearchView(object):
         """
         data = None
         kwargs = {
-        #    'load_all': self.load_all,
+            'load_all': self.load_all,
         }
         if form_kwargs:
             kwargs.update(form_kwargs)
@@ -192,3 +156,85 @@ def search_view_factory(view_class=SearchView, *args, **kwargs):
     def search_view(request):
         return view_class(*args, **kwargs)(request)
     return search_view
+
+
+class FacetedSearchView(SearchView):
+    def __init__(self, *args, **kwargs):
+        # Needed to switch out the default form class.
+        if kwargs.get('form_class') is None:
+            kwargs['form_class'] = FacetedSearchForm
+
+        super(FacetedSearchView, self).__init__(*args, **kwargs)
+
+    def build_form(self, form_kwargs=None):
+        if form_kwargs is None:
+            form_kwargs = {}
+
+        # This way the form can always receive a list containing zero or more
+        # facet expressions:
+        form_kwargs['selected_facets'] = self.request.GET.getlist("selected_facets")
+
+        return super(FacetedSearchView, self).build_form(form_kwargs)
+
+    def extra_context(self):
+        extra = super(FacetedSearchView, self).extra_context()
+        extra['request'] = self.request
+        extra['facets'] = self.results.facet_counts()
+        return extra
+
+
+def basic_search(request, template='search/search.html', load_all=True, form_class=ModelSearchForm, searchqueryset=None, extra_context=None, results_per_page=None):
+    """
+    A more traditional view that also demonstrate an alternative
+    way to use Haystack.
+
+    Useful as an example of for basing heavily custom views off of.
+
+    Also has the benefit of thread-safety, which the ``SearchView`` class may
+    not be.
+
+    Template:: ``search/search.html``
+    Context::
+        * form
+          An instance of the ``form_class``. (default: ``ModelSearchForm``)
+        * page
+          The current page of search results.
+        * paginator
+          A paginator instance for the results.
+        * query
+          The query received by the form.
+    """
+    query = ''
+    results = EmptySearchQuerySet()
+
+    if request.GET.get('q'):
+        form = form_class(request.GET, searchqueryset=searchqueryset, load_all=load_all)
+
+        if form.is_valid():
+            query = form.cleaned_data['q']
+            results = form.search()
+    else:
+        form = form_class(searchqueryset=searchqueryset, load_all=load_all)
+
+    paginator = Paginator(results, results_per_page or RESULTS_PER_PAGE)
+
+    try:
+        page = paginator.page(int(request.GET.get('page', 1)))
+    except InvalidPage:
+        raise Http404("No such page of results!")
+
+    context = {
+        'form': form,
+        'page': page,
+        'paginator': paginator,
+        'query': query,
+        'suggestion': None,
+    }
+
+    if results.query.backend.include_spelling:
+        context['suggestion'] = form.get_suggestion()
+
+    if extra_context:
+        context.update(extra_context)
+
+    return render(request, template, context)

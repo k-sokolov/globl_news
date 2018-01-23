@@ -6,5 +6,6 @@ from .views import SubmitView
 
 urlpatterns = (
     path('submit', SubmitView.as_view(), name='submit'),
-	path('search/', include('haystack.urls'))
+	path('search/', include('search.urls')),
+	
 )
