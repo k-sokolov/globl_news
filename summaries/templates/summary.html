@@ -1,8 +1,21 @@
 {% extends '_layouts/base.html'%}
 
-{% block headline %} <h1> {{object.title}} </h1> {% endblock headline %}
+{% block headline %}
+<h1> {{object.title}} </h1>
+<h3> (Original title: {{object.title_original_article}})
+ {% endblock headline %}
 
 {% block content %}
-{{object.text}}
+
+<p>
+Source: {{object.publisher_original_article}}<br>
+Author: {{object.name_author_original_article}}<br>
+Link: {{object.link_original_article}}<br>
+Date: {{object.publication_date_original_article}}<br>
+Country: {{object.publication_country_original_article}}
+</p>
+
+
+{{object.text|linebreaks}}
 
 {% endblock %}
