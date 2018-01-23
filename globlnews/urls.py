@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from globlnews.views import HomePageView, InstructionView, \
-    SignUpView, ImprintView, YourContributionsView, ScienceStuffView, ProjectInformationView, LoginView, LogOutView
-
+#from globlnews.views import HomePageView, InstructionView, \
+#    SignUpView, ImprintView, YourContributionsView, ScienceStuffView, \
+#     ProjectInformationView, LoginView, LogOutView, FAQView
+from globlnews.views import *
 
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     path('account/login', LoginView.as_view(), name='login'),
     path('account/logout', LogOutView.as_view(), name='logout'),
     path('imprint', ImprintView.as_view(), name='imprint'),
+    path('faq', FAQView.as_view(), name='faq'),
     path('contributions', YourContributionsView.as_view(), name='contributions'),
     path('science', ScienceStuffView.as_view(), name='science'),
     path('projectinformation', ProjectInformationView.as_view(), name='projectinformation'),

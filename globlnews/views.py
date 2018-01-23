@@ -17,6 +17,9 @@ class HomePageView(generic.TemplateView):
 class InstructionView(generic.TemplateView):
     template_name = 'instructions.html'
 
+class FAQView(generic.TemplateView):
+    template_name = 'faq.html'
+
 
 class SignUpView(views.AnonymousRequiredMixin,
                  views.FormValidMessageMixin,
