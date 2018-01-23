@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'summaries.apps.SummariesConfig'
+    'summaries.apps.SummariesConfig',
+	'haystack'
 ]
 
 MIDDLEWARE = [
@@ -145,4 +146,12 @@ TEMPLATE_DIRS = (
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+
 
