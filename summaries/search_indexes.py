@@ -8,10 +8,10 @@ class SummaryIndex(indexes.SearchIndex, indexes.Indexable):
     body = indexes.CharField(model_attr='text')
     title = indexes.CharField(model_attr='title')
     user = indexes.CharField(model_attr='user')
-    submission_date_summary = indexes.DateTimeField(model_attr='submission_date_summary')
+    submission_date_summary = indexes.DateField(model_attr='submission_date_summary')
     publisher_original_article = indexes.CharField(model_attr='publisher_original_article')
     publication_country_original_article = indexes.CharField(model_attr='publication_country_original_article')
-    publication_date_original_article = indexes.CharField(model_attr='publication_date_original_article')
+    publication_date_original_article = indexes.DateField(model_attr='publication_date_original_article')
     
     def get_model(self):
         return Summary
