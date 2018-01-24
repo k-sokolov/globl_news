@@ -31,23 +31,21 @@
                 <a class="navbar-brand" href="#">Globl.News</a>
             </div>-->
             <div class="navbar-collapse collapse">
-
+				
 				<ul class="nav navbar-nav">
 				  <li ><a  class="navbar-brand" href="/#">Globl.News</a></li>
 				  <li><a href="/projectinformation">About</a></li>
 				  <li><a href="/science">Science</a></li>
 				  <li><a href="/imprint">Impressum</a></li>
+				  <li><a href="/faq">FAQ</a></li>
 				  <li><a href="/instructions">Instructions</a></li>
-
 				  <li><a href="/summaries/search">Search</a></li>
-
-          <li><a href="/summaries/overview">Summaries</a></li>
-
+				  <li><a href="/summaries/overview">Summaries</a></li>
 				{% if user.is_authenticated %}
 				  <li><a href="/summaries/submit">Submit</a></li>
                 {% endif %}
 				</ul>
-
+				
 				<div align="right">
 				{% if not user.is_authenticated %}
                 <a href="{% url 'signup' %}" class="btn btn-default btn_register btn_header">Register</a>
