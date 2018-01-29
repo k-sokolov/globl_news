@@ -1,10 +1,21 @@
-.btn_header {
+.btn_header_unauthenticated {
 	color: white;
 	align: center;
+	border-radius: 50%;
+}
+
+.btn_header_authenticated {
+	color: black;
+	align: center;
+	border-radius: 50%;
 }
 
 .btn_register {
 	background-color: red;
+}
+
+.btn_profile {
+	text-color: black;
 }
 
 .btn_search:hover {
@@ -153,5 +164,4 @@ footer{
 		line-height: 1.8;
 	}
 }
-
 
