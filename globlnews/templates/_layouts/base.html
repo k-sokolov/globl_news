@@ -4,6 +4,7 @@
 <head>
     <title>{% block title %}Globl.News{% endblock title%}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 	<style>
         body {
@@ -16,29 +17,16 @@
     </style>
     {% block css %}
 	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+	<link rel="stylesheet" href=""
     {% endblock css %}
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <!--<div class="navbar-header">
-                <!--<button type="button" class="navbare-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Globl.News</a>
-            </div>-->
             <div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
 				  <li ><a  class="navbar-brand" href="/#">Globl.News</a></li>
-				  <li><a href="/projectinformation">About</a></li>
-				  <li><a href="/science">Science</a></li>
-				  <li><a href="/imprint">Impressum</a></li>
-          <li><a href="/faq">FAQ</a></li>
-				  <li><a href="/instructions">Instructions</a></li>
 				  <li><a href="/summaries/search">Search</a></li>
 				  <li><a href="/summaries/overview">Summaries</a></li>
 				{% if user.is_authenticated %}
@@ -70,6 +58,37 @@
     <div class="container">
         {% block content %}{% endblock content %}
     </div>
+	<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="">Home</a>
+					.
+					<a href="/projectinformation">About</a>
+					·
+					<a href="/science">Science</a>
+					·
+					<a href="/faq">FAQ</a>
+					·
+					<a href="/instructions">Instructions</a>
+					·
+					<a href="/imprint">Impressum</a>
+				</p>
+
+				<p>globl.news &copy; 2018</p>
+			</div>
+
+	</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     {% block js %}{% endblock js %}
 </body>
