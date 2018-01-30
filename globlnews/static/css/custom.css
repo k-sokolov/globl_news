@@ -4,10 +4,22 @@
 	border-radius: 50%;
 }
 
+body {
+    margin-bottom: 0;
+}
+
 .btn_header_authenticated {
 	color: black;
 	align: center;
 	border-radius: 50%;
+}
+
+.pagename {
+    margin-top: 0px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: inherit;
+    background-color: #eee;
 }
 
 .btn_register {
@@ -23,13 +35,25 @@
     background-color: grey;
 }
 
+.btn_search {
+    margin-top: 15px;
+}
+
 /* CSS for the overview-page
 -------------------------------------------------------------------------------
 */
 .overview_container {
     position: relative;
     text-align: center;
-    margin: 0 10px 10px;
+    margin: 0 10px 30px;
+}
+
+ @media (min-width: 1200px) {
+    .container-grid {
+        width: 1080px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .centered {
@@ -41,16 +65,16 @@
 }
 
 .bottom {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    text-align: left;
+    margin: 0 auto;
 }
 
-.row {
+.row-overview {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  text-align: center;
 }
 
 /* Create four equal columns that sits next to each other */
@@ -81,10 +105,10 @@
   }
 }
 
-.result h4 {
-    color: black !important;
-    font-size: 1.5rem;
-=======
+.result a {
+    color: inherit !important;
+    font-size: 1.8rem;
+}
 .result {
     color: black;
     font-size: 2rem;
@@ -94,12 +118,13 @@
 */
 
 footer{
-	position: fixed;
+	position: relative;
 	bottom: 0;
+    width: 100%;
 }
 
 @media (max-height:800px){
-	footer { position: static; }
+	footer { position: relative; }
 	header { padding-top:40px; }
 }
 

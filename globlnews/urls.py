@@ -22,7 +22,7 @@ from globlnews.views import *
 
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+    path('home', include('summaries.urls')),
     path('instructions', InstructionView.as_view(), name='instructions'),
 #    path('submit', SubmitView.as_view(), name='submit'),
 #    path('summary', SummaryView.as_view(), name='summary'),

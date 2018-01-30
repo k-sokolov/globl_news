@@ -26,11 +26,11 @@
             <div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
-				  <li ><a  class="navbar-brand" href="/#">Globl.News</a></li>
+				  <li ><a  class="navbar-brand" href="/summaries/overview">Globl.News</a></li>
 
 
 				  <li><a href="/summaries/search">Search</a></li>
-				  <li><a href="/summaries/overview">Summaries</a></li>
+
 				{% if user.is_authenticated %}
 				  <li><a href="/summaries/submit">Submit</a></li>
                 {% endif %}
@@ -55,10 +55,10 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <div class="jumbotron">
+    <div class="pagename">
         <div class="container">{% block headline %}{% endblock headline %}</div>
     </div>
-    <div class="container">
+    <div class="container-grid">
         {% block content %}{% endblock content %}
     </div>
 	<footer class="footer-distributed">

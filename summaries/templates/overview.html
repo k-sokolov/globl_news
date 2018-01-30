@@ -7,23 +7,19 @@
 
 {% block content %}
     {% load own_filters %}
-
-    
-    
-        
-        
-        <div class="row">
-        {% for summary in object_list %}
+        <h3 align="center">Most popular articles</h3> 
+        <div class="row-overview" >
+        {% for summary in summary_list %}
             {% if forloop.counter|modulo:2 == 1 %}
             <div class="column">
             {% endif %}
             <article class="overview_container">
                 <figure>
                     <a href="{{ summary.get_absolute_url }}">
-                    <img src="{% static "pictures/Silver-Writing.jpeg" %}" alt="My image"/>
+                    <img src="{% static "pictures/germany.png" %}" alt="My image"/>
                     </a>
                 </figure>
-                <div class="bottom">
+                <div class="bottom result">
                     <h4>
                     <a href="{{ summary.get_absolute_url }}">{{ summary.title }}</a>
                     </h4>
@@ -34,9 +30,23 @@
             </div>
             {% endif %}
         
-        
-        
         {% endfor %}
         
         </div>
+    
+    <div class="overview_container" style="text-align: center">    
+        <h1>Search</h1> 
+
+        <form method="get" action="search">
+            <table class="table-condensed" align="center">
+            {{ form.as_table }}
+            </table>   
+            <input class='btn btn_search' type="submit" value="Search"> 
+                
+        </form>
+    </div>
 {% endblock %}
+
+
+    
+    

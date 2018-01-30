@@ -54,6 +54,8 @@ class SummaryList(generic.ListView):
     model = models.Summary
     context_object_name = 'summary_list'
     queryset = models.Summary.objects.all().order_by('-submission_date_summary')[:8]
+    form = forms.SearchForm()
+    extra_context={'form': form}
     template_name = 'overview.html'
     
 class SearchView(object):

@@ -11,8 +11,8 @@
                 
     </form>
         {% if query %}
-            <h3>Results</h3>
-            <div class="row">
+            <h3 align="center">Results</h3>
+            <div class="row-overview">
             {% for result in page.object_list %}
                 {% if forloop.counter|modulo:2 == 1 %}
                     <div class="column">
@@ -20,7 +20,7 @@
                 <article class="overview_container">
                     <figure>
                         <a href="{{ result.object.get_absolute_url }}">
-                            <img src="{% static "pictures/Silver-Writing.jpeg" %}" alt="My image"/>
+                            <img src="{% static "pictures/germany.png" %}" alt="My image"/>
                         </a>
                     </figure>
                     <div class="bottom result">
