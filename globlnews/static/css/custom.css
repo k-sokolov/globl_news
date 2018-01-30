@@ -6,6 +6,14 @@
 	color: #8f9296;
 }
 
+.btn_header_authenticated:hover{
+	color: white;
+}
+
+.btn_header_unauthenticated:hover{
+	color: white;
+}
+
 .btn_header_authenticated {
 	align: center;
 	border-radius: 50%;
@@ -196,4 +204,10 @@ footer{
 	.footer-distributed .footer-left p.footer-links{
 		line-height: 1.8;
 	}
+}
+
+
+/* FAQ CSS */
+.question {
+	font-size:20px
 }
