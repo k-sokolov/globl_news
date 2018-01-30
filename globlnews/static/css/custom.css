@@ -1,22 +1,28 @@
 .btn_header_unauthenticated {
-	color: white;
 	align: center;
 	border-radius: 50%;
+	background-color: #222;
+	border-color: #222;
+	color: #8f9296;
 }
 
 .btn_header_authenticated {
-	color: black;
 	align: center;
 	border-radius: 50%;
+	background-color: #222;
+	border-color: #222;
+	color: #8f9296;
+
 }
 
-.btn_register {
+/*.btn_register {
 	background-color: red;
+}*/
+
+.btn_submit {
+	font-size: 25;
 }
 
-.btn_profile {
-	text-color: black;
-}
 
 .btn_search:hover {
     color: white;
