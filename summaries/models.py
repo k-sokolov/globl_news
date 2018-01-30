@@ -20,6 +20,7 @@ class Summary(models.Model):
     name_author_original_article = models.CharField(max_length=255)
     title_original_article = models.CharField(max_length=255)
     publication_date_original_article = models.DateField()
+    #what_tag = models.CharField(max_length=255)
     COUNTRY_CHOICES = (
             ('RU', 'Russia'),
             ('US', 'USA'),

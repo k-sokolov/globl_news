@@ -64,6 +64,7 @@ class SearchView(object):
     request = None
     form = None
     results_per_page = RESULTS_PER_PAGE
+    search_bool = False
 
     def __init__(self, template=None, load_all=True, form_class=None, searchqueryset=None, results_per_page=None):
         self.load_all = load_all
@@ -71,7 +72,7 @@ class SearchView(object):
         self.searchqueryset = searchqueryset
 
         if form_class is None:
-            self.form_class = forms.SearchForm
+            self.form_class = forms.AdvancedSearchForm
 
         if not results_per_page is None:
             self.results_per_page = results_per_page
@@ -90,6 +91,7 @@ class SearchView(object):
         self.form = self.build_form()
         self.query = self.get_query()
         self.results = self.get_results()
+        
 
         return self.create_response()
 
@@ -119,7 +121,7 @@ class SearchView(object):
         Returns an empty string if the query is invalid.
         """
         if self.form.is_valid():
-            return self.form.cleaned_data['q']
+            return self.form.cleaned_data
 
         return ''
 
@@ -129,6 +131,7 @@ class SearchView(object):
 
         Returns an empty list if there's no query to search with.
         """
+        
         return self.form.search()
 
     def build_page(self):
@@ -172,14 +175,15 @@ class SearchView(object):
 
         context = {
             'query': self.query,
+            'search' : self.search_bool,
             'form': self.form,
             'page': page,
             'paginator': paginator,
             'suggestion': None,
         }
 
-        if hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
-            context['suggestion'] = self.form.get_suggestion()
+        #if hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
+         #   context['suggestion'] = self.form.get_suggestion()
 
         context.update(self.extra_context())
 
@@ -191,5 +195,5 @@ class SearchView(object):
         """
 
         context = self.get_context()
-
+        print('q', self.query)
         return render(self.request, self.template, context)

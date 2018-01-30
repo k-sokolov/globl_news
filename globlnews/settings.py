@@ -25,7 +25,7 @@ SECRET_KEY = '=c65jq1v&5%nrqvj4jq(5ji5wk9a@11qfricp#koj)04we&$qs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'wado7ju673ccpzw2.onion']
 
 
 # Application definition
@@ -92,9 +92,12 @@ DATABASES = {
  'ENGINE': 'django.db.backends.mysql',
  'NAME': 'globlnewsdb',
  'USER': 'root',
- 'PASSWORD': 'root',
+ 'PASSWORD': 'jktirijngt',
  'HOST': 'localhost',   
  'PORT': '3306',
+ 'OPTIONS': {
+                    'charset': 'cp1251',
+                    'use_unicode': True, },
  }
 }
 
@@ -148,10 +151,13 @@ TEMPLATE_DIRS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
+
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+
 
 

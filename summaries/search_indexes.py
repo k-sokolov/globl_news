@@ -4,7 +4,7 @@ from summaries.models import Summary
 
 
 class SummaryIndex(indexes.SearchIndex, indexes.Indexable):
-    text = indexes.CharField(document=True, use_template=False)
+    text = indexes.CharField(document=True, use_template=True)
     body = indexes.CharField(model_attr='text')
     title = indexes.CharField(model_attr='title')
     user = indexes.CharField(model_attr='user')
@@ -12,6 +12,7 @@ class SummaryIndex(indexes.SearchIndex, indexes.Indexable):
     publisher_original_article = indexes.CharField(model_attr='publisher_original_article')
     publication_country_original_article = indexes.CharField(model_attr='publication_country_original_article')
     publication_date_original_article = indexes.DateField(model_attr='publication_date_original_article')
+    tags = indexes.NgramField(model_attr='title')
     
     def get_model(self):
         return Summary
