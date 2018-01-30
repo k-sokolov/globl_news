@@ -102,8 +102,7 @@ html {
 body {
   position: relative;
   margin: 0;
-  padding-bottom: 300px;
-  min-height: 100%;
+  min-height: 140%;
 }
 
 
@@ -113,7 +112,8 @@ footer{
 }
 
 @media (max-height:800px){
-	footer { position: relative; }
+	footer { position: relative;
+				 }
 	header { padding-top:40px; }
 }
 
