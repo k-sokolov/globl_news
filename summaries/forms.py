@@ -22,6 +22,7 @@ class SummaryForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             'title',
+            #'tags',
             'text',
             'link_original_article',
             'publisher_original_article',
@@ -39,15 +40,14 @@ class SummaryForm(forms.ModelForm):
 
         
 class SearchForm(forms.Form):
-    q = forms.CharField(required=False, label=('Search'),
-                        widget=forms.TextInput(attrs={'type': 'search'}))
+    text_contains = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
         self.searchqueryset = kwargs.pop('searchqueryset', None)
         self.load_all = kwargs.pop('load_all', False)
 
         if self.searchqueryset is None:
-            self.searchqueryset = SearchQuerySet()
+            self.searchqueryset = SearchQuerySet()#.models(models.Summary)
 
         super(SearchForm, self).__init__(*args, **kwargs)
 
@@ -60,16 +60,17 @@ class SearchForm(forms.Form):
         Should you want to show all results, override this method in your
         own ``SearchForm`` subclass and do ``return self.searchqueryset.all()``.
         """
-        return EmptySearchQuerySet()
+        print(1)
+        return self.searchqueryset.filter()
 
     def search(self):
         if not self.is_valid():
             return self.no_query_found()
 
-        if not self.cleaned_data.get('q'):
+        if not self.cleaned_data.get('text_contains'):
             return self.no_query_found()
 
-        sqs = self.searchqueryset.auto_query(self.cleaned_data['q'])
+        sqs = self.searchqueryset.auto_query(self.cleaned_data['text_contains'])
 
         if self.load_all:
             sqs = sqs.load_all()
@@ -80,6 +81,55 @@ class SearchForm(forms.Form):
         if not self.is_valid():
             return None
 
-        return self.searchqueryset.spelling_suggestion(self.cleaned_data['q'])
+        return self.searchqueryset.spelling_suggestion(self.cleaned_data['text_contains'])
+
+class AdvancedSearchForm(SearchForm):
 
 
+    title_contains = forms.CharField(max_length=255, required=False)
+    submission_date_summary = forms.DateField(required=False,\
+                                widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
+                                
+    publication_date_original_article = forms.DateField(required=False,\
+                                widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
+                                
+    publisher_original_article = forms.CharField(max_length=255, required=False)
+    publication_country_original_article = forms.CharField(max_length=255, required=False)
+    tags = forms.CharField(max_length=255, required=False)
+    
+
+    
+    def no_query_found(self):
+        
+        return self.searchqueryset.exclude(title='someweirdshit')
+
+    def search(self):
+        if not self.is_valid():
+            return self.no_query_found()       
+
+
+       # First, store the SearchQuerySet received from other processing.
+        sqs = super(AdvancedSearchForm, self).search()
+
+
+        # Check to see if a start_date was chosen.
+        if self.cleaned_data['title_contains']:
+            sqs = sqs.filter(title=self.cleaned_data['title_contains'])
+
+        # Check to see if an end_date was chosen.
+        if self.cleaned_data['submission_date_summary']:
+            sqs = sqs.filter(submission_date_summary=self.cleaned_data['submission_date_summary'])
+            
+        if self.cleaned_data['publication_date_original_article']:
+            sqs = sqs.filter(publication_date_original_article=self.cleaned_data['publication_date_original_article'])
+            
+        if self.cleaned_data['publisher_original_article']:
+            sqs = sqs.filter(publisher_original_article=self.cleaned_data['publisher_original_article'])
+            
+        if self.cleaned_data['publication_country_original_article']:
+            sqs = sqs.filter(publication_country_original_article=self.cleaned_data['publication_country_original_article'])
+            
+        if self.cleaned_data['tags']:
+            sqs = sqs.autocomplete(tags=self.cleaned_data['tags'])
+
+        return sqs

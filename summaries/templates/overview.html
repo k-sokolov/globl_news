@@ -8,20 +8,35 @@
 {% block content %}
     {% load own_filters %}
 
-    <div class="row">
+    
+    
+        
+        
+        <div class="row">
         {% for summary in object_list %}
             {% if forloop.counter|modulo:2 == 1 %}
-        <div class="column">
+            <div class="column">
             {% endif %}
-            <div class="overview_container">
-                <img src="{% static "pictures/Silver-Writing.jpeg" %}" alt="My image"/>
-                <div class="centered">
+            <article class="overview_container">
+                <figure>
+                    <a href="{{ summary.get_absolute_url }}">
+                    <img src="{% static "pictures/Silver-Writing.jpeg" %}" alt="My image"/>
+                    </a>
+                </figure>
+                <div class="bottom">
+                    <h4>
                     <a href="{{ summary.get_absolute_url }}">{{ summary.title }}</a>
+                    </h4>
                 </div>
-            </div>
+                
+            </article>
             {% if forloop.counter|modulo:2 == 0 %}
-        </div>
+            </div>
             {% endif %}
+        
+        
+        
         {% endfor %}
-    </div>
+        
+        </div>
 {% endblock %}

@@ -15,6 +15,7 @@
 .overview_container {
     position: relative;
     text-align: center;
+    margin: 0 10px 10px;
 }
 
 .centered {
@@ -22,19 +23,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
+}
+
+.bottom {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 0;
 }
 
 /* Create four equal columns that sits next to each other */
 .column {
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
+  #flex: 25%;
+  #width: 25%;
+  padding: 0;
 }
 
 .column img {
@@ -46,7 +55,7 @@
 @media (max-width: 800px) {
   .column {
     flex: 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
@@ -54,10 +63,10 @@
 @media (max-width: 600px) {
   .column {
     flex: 100%;
-    max-width: 100%;
+    width: 100%;
   }
 }
 
-.result {
-    color: black;
-    font-size: 2rem;
+.result h4 {
+    color: black !important;
+    font-size: 1.5rem;
