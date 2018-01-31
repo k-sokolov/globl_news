@@ -61,7 +61,7 @@ class SearchForm(forms.Form):
         own ``SearchForm`` subclass and do ``return self.searchqueryset.all()``.
         """
         print(1)
-        return self.searchqueryset.filter()
+        return self.searchqueryset.all()
 
     def search(self):
         if not self.is_valid():
@@ -101,7 +101,7 @@ class AdvancedSearchForm(SearchForm):
     
     def no_query_found(self):
         
-        return self.searchqueryset.exclude(title='someweirdshit')
+        return self.searchqueryset.all().filter()
 
     def search(self):
         if not self.is_valid():
