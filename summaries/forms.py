@@ -40,7 +40,8 @@ class SummaryForm(forms.ModelForm):
 
         
 class SearchForm(forms.Form):
-    text_contains = forms.CharField(required=False)
+    text_contains = forms.CharField(required=False, label='', \
+    widget=forms.TextInput(attrs={'placeholder': 'keywords'}))
 
     def __init__(self, *args, **kwargs):
         self.searchqueryset = kwargs.pop('searchqueryset', None)

@@ -19,10 +19,11 @@ body {
 }
 
 .btn_header_authenticated {
-	align: center;
-	border-radius: 50%;
+
+    position: relative;
 	background-color: #222;
 	border-color: #222;
+
 	color: #8f9296;
 
 }
@@ -56,12 +57,39 @@ body {
 .overview_container {
     position: relative;
     text-align: center;
-    margin: 0 10px 30px;
+    margin-left: 10px;
+    float: left;
 }
-
- @media (min-width: 1200px) {
+/* responsive grid containers
+-------------------------------------------------------------------------------
+*/
+ @media (min-width: 1080px) {
     .container-grid {
         width: 1080px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+ @media (max-width: 1080px) {
+    .container-grid {
+        width: 810px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+ @media (max-width: 810px) {
+    .container-grid {
+        width: 540px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+ @media (max-width: 540px) {
+    .container-grid {
+        width: 270px;
         max-width: 100%;
         margin: 0 auto;
     }
@@ -78,7 +106,8 @@ body {
 .bottom {
     position: relative;
     text-align: left;
-    margin: 0 auto;
+    
+    margin-bottom: 20px;
 }
 
 .row-overview {
@@ -90,8 +119,9 @@ body {
 
 /* Create four equal columns that sits next to each other */
 .column {
-  #flex: 25%;
-  #width: 25%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 25%;
   padding: 0;
 }
 
@@ -100,8 +130,16 @@ body {
   vertical-align: middle;
 }
 
+/* Responsive layout - makes a 3 column-layout instead of four columns */
+@media (max-width: 1070px) {
+  .column {
+    flex: 33%;
+    width: 33%;
+  }
+}
+
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 800px) {
+@media (max-width: 810px) {
   .column {
     flex: 50%;
     width: 50%;
@@ -109,7 +147,7 @@ body {
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
+@media (max-width: 540px) {
   .column {
     flex: 100%;
     width: 100%;
@@ -120,7 +158,7 @@ body {
 .result a {
     color: inherit !important;
     font-size: 1.8rem;
-
+}
 .result h4 {
     color: black !important;
     font-size: 1.5rem;
@@ -147,7 +185,7 @@ body {
 
 
 footer{
-	position: absolute;
+	position: relative;
 	bottom: 0;
     width: 100%;
 }
@@ -244,7 +282,7 @@ th, td {
     vertical-align: top;
 }
 
-table {
+.faq_table {
     margin-left: auto;
     margin-right: auto;
 }
