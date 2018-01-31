@@ -92,8 +92,8 @@ DATABASES = {
  'ENGINE': 'django.db.backends.mysql',
  'NAME': 'globlnewsdb',
  'USER': 'root',
- 'PASSWORD': 'jktirijngt',
- 'HOST': 'localhost',   
+ 'PASSWORD': 'root',
+ 'HOST': 'localhost',
  'PORT': '3306',
  'OPTIONS': {
                     'charset': 'cp1251',
@@ -158,6 +158,3 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
-
-
-

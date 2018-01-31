@@ -1,7 +1,17 @@
 .btn_header_unauthenticated {
-	color: white;
 	align: center;
 	border-radius: 50%;
+	background-color: #222;
+	border-color: #222;
+	color: #8f9296;
+}
+
+.btn_header_authenticated:hover{
+	color: white;
+}
+
+.btn_header_unauthenticated:hover{
+	color: white;
 }
 
 body {
@@ -9,10 +19,14 @@ body {
 }
 
 .btn_header_authenticated {
-	color: black;
 	align: center;
 	border-radius: 50%;
+	background-color: #222;
+	border-color: #222;
+	color: #8f9296;
+
 }
+
 
 .pagename {
     margin-top: 0px;
@@ -22,13 +36,10 @@ body {
     background-color: #eee;
 }
 
-.btn_register {
-	background-color: red;
+.btn_submit {
+	font-size: 25;
 }
 
-.btn_profile {
-	text-color: black;
-}
 
 .btn_search:hover {
     color: white;
@@ -61,7 +72,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
 }
 
 .bottom {
@@ -105,9 +116,14 @@ body {
   }
 }
 
+
 .result a {
     color: inherit !important;
     font-size: 1.8rem;
+
+.result h4 {
+    color: black !important;
+    font-size: 1.5rem;
 }
 .result {
     color: black;
@@ -117,14 +133,28 @@ body {
 -----------------------------------------------------------------------
 */
 
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 140%;
+}
+
+
 footer{
-	position: relative;
+	position: absolute;
 	bottom: 0;
     width: 100%;
 }
 
 @media (max-height:800px){
-	footer { position: relative; }
+	footer { position: relative;
+				 }
 	header { padding-top:40px; }
 }
 
@@ -203,3 +233,18 @@ footer{
 	}
 }
 
+
+/* FAQ CSS */
+.question {
+	font-size:20px
+}
+
+th, td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
