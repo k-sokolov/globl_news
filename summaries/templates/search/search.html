@@ -14,9 +14,9 @@
             <h3 align="center">Results</h3>
             <div class="row-overview">
             {% for result in page.object_list %}
-                {% if forloop.counter|modulo:2 == 1 %}
+
                     <div class="column">
-                {% endif %}
+
                 <article class="overview_container">
                     <figure>
                         <a href="{{ result.object.get_absolute_url }}">
@@ -30,9 +30,9 @@
                     </div>
                 
                 </article>
-                {% if forloop.counter|modulo:2 == 0 %}
+
             </div>
-                {% endif %}
+
             {% endfor %}
             </div>
 

@@ -17,7 +17,7 @@
     </style>
     {% block css %}
 	<link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
-	<link rel="stylesheet" href=""
+	<link rel="stylesheet" href=""/>
     {% endblock css %}
 </head>
 <body>
@@ -26,12 +26,18 @@
             <div class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav">
-				  <li ><a  class="navbar-brand" href="/summaries/overview">Globl.News</a></li>
 
+				  	<li ><a  class="navbar-brand" href="/summaries/overview">Globl.News</a></li>
+				    <li><a href="/science">Science</a></li>
+					<li><a href="/projectinformation">About</a></li>
+					<li><a href="/instructions">Instructions</a></li>
 
-				  <li><a href="/summaries/search">Search</a></li>
-        </ul>
+				  	<li><a href="/summaries/search">Search</a></li>
+                </ul>
+
 				<div align="right">
+
+
 				{% if not user.is_authenticated %}
                 <a href="{% url 'signup' %}" class="btn btn_register btn_header_unauthenticated">Register</a>
                 <a href="{% url 'login' %}" class="btn navbar-btn btn_header_unauthenticated">Login</a>
@@ -40,6 +46,7 @@
 				<a href="/summaries/submit" class="btn btn_submit btn_header_authenticated">+</a>
 				<a href="{% url 'logout' %}" class="btn navbar-btn btn_header_authenticated">Logout</a>
                 {% endif %}
+
 				</div>
             </div>
         </div>
@@ -72,15 +79,7 @@
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a href="">Home</a>
-					·
-					<a href="/projectinformation">About</a>
-					·
-					<a href="/science">Science</a>
-					·
 					<a href="/faq">FAQ</a>
-					·
-					<a href="/instructions">Instructions</a>
 					·
 					<a href="/imprint">Impressum</a>
 				</p>
