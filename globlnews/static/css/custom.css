@@ -31,7 +31,7 @@ body {
 .pagename {
     margin-top: 0px;
     padding-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: inherit;
     background-color: #eee;
 }
@@ -56,7 +56,8 @@ body {
 .overview_container {
     position: relative;
     text-align: center;
-    margin: 0 10px 30px;
+
+
 }
 
  @media (min-width: 1200px) {
@@ -79,6 +80,7 @@ body {
     position: relative;
     text-align: left;
     margin: 0 auto;
+		margin-bottom: 80px;
 }
 
 .row-overview {
@@ -90,8 +92,8 @@ body {
 
 /* Create four equal columns that sits next to each other */
 .column {
-  #flex: 25%;
-  #width: 25%;
+  flex: 25%;
+  width: 25%;
   padding: 0;
 }
 
@@ -100,27 +102,31 @@ body {
   vertical-align: middle;
 }
 
+
 /* Responsive layout - makes a two column-layout instead of four columns */
+/*
 @media (max-width: 800px) {
   .column {
     flex: 50%;
     width: 50%;
   }
 }
+*/
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+/*
 @media (max-width: 600px) {
   .column {
     flex: 100%;
     width: 100%;
   }
 }
-
+*/
 
 .result a {
     color: inherit !important;
     font-size: 1.8rem;
-
+}
 .result h4 {
     color: black !important;
     font-size: 1.5rem;
@@ -129,6 +135,7 @@ body {
     color: black;
     font-size: 2rem;
 }
+
 /*CSS for the footer
 -----------------------------------------------------------------------
 */
@@ -147,7 +154,7 @@ body {
 
 
 footer{
-	position: absolute;
+	position: relative;
 	bottom: 0;
     width: 100%;
 }
