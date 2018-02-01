@@ -19,10 +19,12 @@ from django.urls import path, include
 #    SignUpView, ImprintView, YourContributionsView, ScienceStuffView, \
 #     ProjectInformationView, LoginView, LogOutView, FAQView
 from globlnews.views import *
+from summaries.views import *
 
 
 urlpatterns = [
     path('home', include('summaries.urls')),
+    path('', SummaryList.as_view(), name='summary_list'),
     path('instructions', InstructionView.as_view(), name='instructions'),
 #    path('submit', SubmitView.as_view(), name='submit'),
 #    path('summary', SummaryView.as_view(), name='summary'),
