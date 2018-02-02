@@ -1,14 +1,14 @@
 {% extends '_layouts/base.html'%}
-{% block headline %}  <h1>Search</h1> {% endblock headline %}
+{% block headline %} <div class="content_header"> <h1>Search</h1>  </div>{% endblock headline %}
 {% block content %}
 {% load static %}
 {% load own_filters %}
     <form method="get" action=".">
         <table class="table-condensed">
             {{ form.as_table }}
-        </table>   
-            <input class='btn btn_search' type="submit" value="Search"> 
-                
+        </table>
+            <input class='btn btn_search' type="submit" value="Search">
+
     </form>
         {% if query %}
             <h3 align="center">Results</h3>
@@ -28,7 +28,7 @@
                             <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
                         </h4>
                     </div>
-                
+
                 </article>
 
             </div>
@@ -37,5 +37,5 @@
             </div>
 
         {% endif %}
-    
+
 {% endblock %}
