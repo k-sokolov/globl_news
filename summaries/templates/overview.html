@@ -16,10 +16,11 @@
             <article class="overview_container">
                 <figure>
                     <a href="{{ summary.get_absolute_url }}">
-                    <img src="{% static "pictures/germany.png" %}" alt="My image"/>
+                    <!-- auto country <img src="/static/pictures/{{ summary.publication_country_original_article }}.png" alt="My image"/> -->
+                    <img src="/static/pictures/Germany.png" alt="My image"/>
                     </a>
                 </figure>
-                <div class="bottom_result">
+                <div class="bottom result">
                     <h4>
                     <a href="{{ summary.get_absolute_url }}">{{ summary.title }}</a>
                     </h4>

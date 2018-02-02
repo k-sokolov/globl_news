@@ -14,9 +14,7 @@
 	color: white;
 }
 
-body {
-    margin-bottom: 0;
-}
+
 
 .btn_header_authenticated {
 
@@ -41,7 +39,7 @@ body {
 }
 
 .btn_submit {
-	font-size: 25;
+	font-size: 25px;
 }
 
 
@@ -54,6 +52,14 @@ body {
     margin-top: 15px;
 }
 
+.selectdatewidget {
+    width: 33.3%
+}
+
+.lazyselect {
+    width: 33.3%
+}
+
 /* CSS for the overview-page
 -------------------------------------------------------------------------------
 */
@@ -61,6 +67,7 @@ body {
     position: relative;
     text-align: center;
     margin-left: 10px;
+
     float: left;
 }
 /* responsive grid containers
@@ -71,6 +78,7 @@ body {
         width: 1080px;
         max-width: 100%;
         margin: 0 auto;
+        margin-bottom: 20px;
     }
 }
 
@@ -184,25 +192,22 @@ body {
 
 
 html {
-  height: 100%;
-  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  position: relative;
-  margin: 0;
-  min-height: 140%;
+
+    padding-bottom: 170px;
 }
 
 
 footer{
-	position: relative;
-	bottom: 0;
-    width: 100%;
+
 }
 
 @media (max-height:800px){
-	footer { position: relative;
+	footer { position: absolute;
 				 }
 	header { padding-top:40px; }
 }
@@ -214,15 +219,17 @@ footer{
 	width: 100%;
 	text-align: left;
 	font: normal 16px sans-serif;
-
+    margin-top: 10px;
 	padding: 45px 50px;
-	margin-top: 80px;
+    bottom: 0;
+    position: absolute;
+
 }
 
 .footer-distributed .footer-left p{
 	color:  #8f9296;
 	font-size: 14px;
-	margin: 0;
+
 }
 
 /* Footer links */
@@ -231,7 +238,7 @@ footer{
 	font-size:18px;
 	font-weight: bold;
 	color:  #ffffff;
-	margin: 0 0 10px;
+
 	padding: 0;
 }
 

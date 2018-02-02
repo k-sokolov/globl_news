@@ -3,6 +3,9 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
+
 #class Topic(models.Model):
 #    title = models.CharField(max_length=200)
 #    short_summary = models.CharField(max_length=1000)
@@ -14,7 +17,7 @@ class Summary(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     text = models.TextField(max_length=8000)
-    comment_author = models.TextField(max_length=3000)
+    comment_author = models.TextField(max_length=3000, blank=True)
     tags = models.ManyToManyField('Tag', db_table='articletag')
     link_original_article = models.CharField(max_length=255)
     publisher_original_article = models.CharField(max_length=255)
@@ -28,7 +31,7 @@ class Summary(models.Model):
             ('GER', 'Germany')
     )
     #publication_country_original_article = models.CharField(choices = ['Russia','Germany', 'USA'], default='GER')
-    publication_country_original_article = models.CharField(max_length=255)
+    publication_country_original_article = CountryField()
     #image = models.ImageField(upload_to='../pic_folder/', default='pic_folder/None/no-img.png')
     submission_date_summary = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=255, blank=True)
