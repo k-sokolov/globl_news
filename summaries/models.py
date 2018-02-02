@@ -14,6 +14,7 @@ class Summary(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     text = models.TextField(max_length=8000)
+    comment_author = models.TextField(max_length=3000)
     tags = models.ManyToManyField('Tag', db_table='articletag')
     link_original_article = models.CharField(max_length=255)
     publisher_original_article = models.CharField(max_length=255)

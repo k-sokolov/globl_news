@@ -12,8 +12,9 @@ class SummaryForm(forms.ModelForm):
     class Meta:
         fields = ('title', 'text', 'link_original_article', 'publisher_original_article',
                   'name_author_original_article', 'title_original_article',
-                   'publication_date_original_article',
+                  'publication_date_original_article',
                   'publication_country_original_article')
+        
         model = models.Summary
 
     def __init__(self, *args, **kwargs):
@@ -24,6 +25,7 @@ class SummaryForm(forms.ModelForm):
             'title',
             #'tags',
             'text',
+            'comment_author',
             'link_original_article',
             'publisher_original_article',
             'name_author_original_article',
