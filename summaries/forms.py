@@ -1,4 +1,6 @@
 from django import forms
+from django.forms.widgets import SelectDateWidget
+
 
 import datetime
 from crispy_forms.helper import FormHelper
@@ -10,13 +12,15 @@ from . import models
 
 class SummaryForm(forms.ModelForm):
     class Meta:
-        fields = ('title', 'text', 'link_original_article', 'publisher_original_article',
+        fields = ('title', 'text', 'comment_author', 'link_original_article', 'publisher_original_article',
                   'name_author_original_article', 'title_original_article',
                   'publication_date_original_article',
                   'publication_country_original_article')
         
         model = models.Summary
-
+        
+    publication_date_original_article = forms.DateField(widget=SelectDateWidget)
+#    publication_country_original_article = CountryField(widget=CountrySelectWidget)
     def __init__(self, *args, **kwargs):
         super(SummaryForm, self).__init__(*args, **kwargs)
 
@@ -42,8 +46,7 @@ class SummaryForm(forms.ModelForm):
 
         
 class SearchForm(forms.Form):
-    text_contains = forms.CharField(required=False, label='', \
-    widget=forms.TextInput(attrs={'placeholder': 'keywords'}))
+    text_contains = forms.CharField(required=False, label='Keywords')
 
     def __init__(self, *args, **kwargs):
         self.searchqueryset = kwargs.pop('searchqueryset', None)

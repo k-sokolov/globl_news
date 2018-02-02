@@ -52,6 +52,14 @@
     margin-top: 15px;
 }
 
+.selectdatewidget {
+    width: 33.3%
+}
+
+.lazyselect {
+    width: 33.3%
+}
+
 /* CSS for the overview-page
 -------------------------------------------------------------------------------
 */
