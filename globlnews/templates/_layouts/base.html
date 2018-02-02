@@ -59,10 +59,14 @@
     </ul>
     {% endif %}
 
+
     <div class="pagename">
-        <div class="container">{% block headline %}{% endblock headline %}</div>
-    </div>
+    {% block headline %}{% endblock headline %}
+  </div>
     <div class="container-grid">
+
+
+
         {% block content %}{% endblock content %}
     </div>
 	<footer class="footer-distributed">

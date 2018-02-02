@@ -32,9 +32,12 @@ body {
 .pagename {
     margin-top: 0px;
     padding-bottom: 20px;
+		padding-top: 20px;
     margin-bottom: 30px;
     color: inherit;
     background-color: #eee;
+		text-align: left;
+
 }
 
 .btn_submit {
@@ -293,4 +296,42 @@ th, td {
 .faq_table {
     margin-left: auto;
     margin-right: auto;
+}
+
+
+
+/*------------------summary detail view css-----------------------------*/
+.summary_text{
+	width: 60%;
+	font-size: 16px
+}
+
+
+/*-----------------content--------------------------------*/
+.content{
+	font-size: 16px;
+	width: 70%;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content_header{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+
+/*-----------------science--------------------------------*/
+.bias_header{
+	font-size:16px
+}
+
+
+/*-----------------instrtioncs--------------------------------*/
+.instructions_header{
+	font-size:20px;
+	font-weight: bold;
 }
