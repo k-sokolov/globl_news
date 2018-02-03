@@ -38,4 +38,5 @@ urlpatterns = [
     path('projectinformation', ProjectInformationView.as_view(), name='projectinformation'),
     path('summaries/', include('summaries.urls')),
     path('admin', admin.site.urls),
+    path('terms', TermsView.as_view(), name='terms')
 ]

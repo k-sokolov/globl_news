@@ -77,3 +77,6 @@ class ScienceStuffView(generic.TemplateView):
 
 class ProjectInformationView(generic.TemplateView):
     template_name = 'projectinformation.html'
+
+class TermsView(generic.TemplateView):
+        template_name = 'terms.html'
