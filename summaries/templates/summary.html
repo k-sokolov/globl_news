@@ -2,7 +2,7 @@
 
 {% block headline %}
 <h1> {{object.title}} </h1>
-<h3> (Original title: {{object.title_original_article}})
+<h3> (Original title: {{object.title_original_article}}) </h3>
  {% endblock headline %}
 
 {% block content %}
@@ -15,13 +15,19 @@
 
 
 <p>
+Summarized by: {{object.user}} <br>
+Submittor's comments:
+{% if not object.comment_author %}
+    no comment available <br>
+{% else %}
+    {{object.comment_author}}<br>
+{% endif%}
+<br>
 Source: {{object.publisher_original_article}}<br>
 Author: {{object.name_author_original_article}}<br>
 Link: <a href='//{{object.link_original_article}}'>{{object.link_original_article}}</a><br>
 Date: {{object.publication_date_original_article}}<br>
 Country: {{object.publication_country_original_article}}<br>
-<br>
-Submittor's comments: {{object.comment_author}}
 </p>
 
 {% endblock %}

@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.widgets import SelectDateWidget
+from datetime import datetime as dt
 
 
 import datetime
@@ -18,8 +19,9 @@ class SummaryForm(forms.ModelForm):
                   'publication_country_original_article')
         
         model = models.Summary
-        
-    publication_date_original_article = forms.DateField(widget=SelectDateWidget)
+
+    current_year = dt.now().year
+    publication_date_original_article = forms.DateField(widget=SelectDateWidget(years=range(1950, current_year + 1)))
 #    publication_country_original_article = CountryField(widget=CountrySelectWidget)
     def __init__(self, *args, **kwargs):
         super(SummaryForm, self).__init__(*args, **kwargs)

@@ -17,7 +17,17 @@
                 <figure>
                     <a href="{{ summary.get_absolute_url }}">
                     <!-- auto country <img src="/static/pictures/{{ summary.publication_country_original_article }}.png" alt="My image"/> -->
-                    <img src="/static/pictures/Germany.png" alt="My image"/>
+                    {% if summary.publication_country_original_article == 'IT' %}
+                       <img src="/static/pictures/italy.png" alt="My image" width="100%"/>
+                    {% elif summary.publication_country_original_article == 'DE' %}
+                       <img src="/static/pictures/Germany_new.png" alt="My image" width="100%"/>
+                    {% elif summary.publication_country_original_article == 'RU' %}
+                       <img src="/static/pictures/russia_smaller.png" alt="My image" width="100%"/>
+                    {% endif%}
+
+
+
+                        <!--<img src="/static/pictures/Germany.png" alt="My image"/>-->
                     </a>
                 </figure>
                 <div class="bottom result">
