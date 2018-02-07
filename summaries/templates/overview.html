@@ -7,7 +7,7 @@
 
 {% block content %}
     {% load own_filters %}
-        <h3 align="center">Most popular articles</h3>
+        <h3 align="center">Most recent articles</h3>
         <div class="row-overview" >
         {% for summary in summary_list %}
 
@@ -16,16 +16,7 @@
             <article class="overview_container">
                 <figure>
                     <a href="{{ summary.get_absolute_url }}">
-                    <!-- auto country <img src="/static/pictures/{{ summary.publication_country_original_article }}.png" alt="My image"/> -->
-                    {% if summary.publication_country_original_article == 'IT' %}
-                       <img src="/static/pictures/italy.png" alt="My image" width="100%"/>
-                    {% elif summary.publication_country_original_article == 'DE' %}
-                       <img src="/static/pictures/Germany_new.png" alt="My image" width="100%"/>
-                    {% elif summary.publication_country_original_article == 'RU' %}
-                       <img src="/static/pictures/russia_smaller.png" alt="My image" width="100%"/>
-                    {% endif%}
-
-
+                    <img src="/static/pictures/{{ summary.publication_country_original_article }}.png" alt="My image"/> 
 
                         <!--<img src="/static/pictures/Germany.png" alt="My image"/>-->
                     </a>
