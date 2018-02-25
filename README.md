@@ -1,4 +1,5 @@
 # globlnews
+A joint effort of @jonanias, @k-sokolov, @lukeeffenberger
 
 Stuff that needs to be installed:
 
